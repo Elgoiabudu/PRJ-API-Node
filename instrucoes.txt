@@ -1,0 +1,7 @@
+docker run -d -p 3306:3306 --name meu-mysql -e MYSQL_ROOT_PASSWORD=sua_senha mysql:latest
+
+docker start meu-mysql
+
+docker exec -it meu-mysql mysql -u root -p
+
+usar o thunder client
