@@ -12,10 +12,10 @@ jobs:
  
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:5.5
         env:
-          MYSQL_ROOT_USER: root
-          MYSQL_ROOT_PASSWORD: mysql@123
+          MYSQL_USER: root
+          MYSQL_ROOT_PASSWORD: teste
           MYSQL_DATABASE: userdb
         ports:
           - 3306:3306
@@ -33,6 +33,6 @@ jobs:
     - name: Install client MySQL
       run: sudo apt install mysql-client
     - name: Create tables
-      run: mysql -u root -p < estrutura.sql
+      run: mysql -u root < estrutura.sql
     - name: Run tests
       run: npm test
