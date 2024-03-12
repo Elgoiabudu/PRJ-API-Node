@@ -14,9 +14,9 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_USER: teste
-          MYSQL_ROOT_PASSWORD: senha          
-          MYSQL_DATABASE: bancodedados
+          MYSQL_USER: root
+          MYSQL_ROOT_PASSWORD: mysql@123          
+          MYSQL_DATABASE: userdb
         ports:
           - 3306:3306
 
@@ -33,6 +33,6 @@ jobs:
     - name: Install cliente aqui
       run: apt install mysql-client
     - name: Criar tabelas
-      run: mysql -h localhost -u root -p senha bancodedados < estrutura.sql
+      run: mysql -h localhost -u root -p mysql@123 userdb < estrutura.sql
     - name: Run tests
       run: npm test
