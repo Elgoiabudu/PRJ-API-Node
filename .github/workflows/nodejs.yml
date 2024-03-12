@@ -33,6 +33,6 @@ jobs:
     - name: Install client MySQL
       run: sudo apt install mysql-client
     - name: Create tables
-      run: mysql -u root< estrutura.sql
+      run: mysql -u root -p < estrutura.sql
     - name: Run tests
       run: npm test
