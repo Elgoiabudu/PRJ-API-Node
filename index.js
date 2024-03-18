@@ -8,9 +8,9 @@ const port = 3000;
 // Configuração do MySQL
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: process.env.MYSQL_USER, // Usa variáveis de ambiente // root
-  password: process.env.MYSQL_PASSWORD, // 'mysql@123'
-  database: process.env.MYSQL_DATABASE // 'userdb'
+  user: process.env.MYSQL_USER || "root", // Usa variáveis de ambiente // root
+  password: process.env.MYSQL_PASSWORD || "mysql@123", // 'mysql@123'
+  database: process.env.MYSQL_DATABASE || "user" // 'user'
 });
 
 
@@ -31,6 +31,7 @@ app.post('/users', (req, res) => {
   const INSERT_USER_QUERY = `INSERT INTO users (name, email) VALUES (?, ?)`;
   connection.query(INSERT_USER_QUERY, [name, email], (err, results) => {
     if (err) throw err;
+    res.statusCode = 201;
     res.send('Usuário criado com sucesso');
   });
 });
