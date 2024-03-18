@@ -13,8 +13,7 @@ jobs:
     services:
       mysql:
         image: mysql:8.0
-        env:
-          
+        env:                  
           MYSQL_ROOT_PASSWORD: teste
           MYSQL_DATABASE: userdb
         ports:
@@ -39,6 +38,9 @@ jobs:
 
     - name: Create tables
       run: mysql -h 127.0.0.1 --port 3306 -u root -pteste userdb < estrutura.sql
-      
     - name: Run tests
+      env:
+          MYSQL_USER: root
+          MYSQL_PASSWORD: teste
+          MYSQL_DATABASE: userdb          
       run: npm test
