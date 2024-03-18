@@ -8,6 +8,13 @@ describe('Teste GET /users', () => {
   });
 });
 
+describe('Teste POST /users', () => {
+  it('deve responder com status 201', async () => {
+    const response = await supertest(app).post('/users').send({ name: 'Clodoaldo', email: 'clodoaldo@gmail.com' });
+    expect(response.statusCode).toBe(201);
+  });
+});
+
 afterAll(() =>{
   server.close();
   connection.end();
