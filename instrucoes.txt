@@ -1,4 +1,4 @@
-docker run -d -p 3306:3306 --name meu-mysql -e MYSQL_ROOT_PASSWORD=sua_senha mysql:latest
+docker run -d -p 3306:3306 --name meu-mysql -e MYSQL_ROOT_PASSWORD=mysql@123 mysql:latest
 
 docker start meu-mysql
 
