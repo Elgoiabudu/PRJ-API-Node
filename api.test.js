@@ -42,6 +42,9 @@ describe('Teste put /user/id', ()=>{
     const inserted = await supertest(app).post('/users').send({name: "teste testado ", email: "teste@gmail.com"});
  
     const response = await supertest(app).put(`/users/${inserted.body.id}`).send({name: "teste analitico", email: "testeConsiglog@gmail.com"})
+
+    await supertest(app).delete(`/users/${inserted.body.id}`);
+    
     expect(response.statusCode).toBe(204);
   });
 });
